@@ -31,39 +31,47 @@ namespace CleverPoppy
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            lblError.Text = "";
-            SqlConnection sqlcon = new SqlConnection(conn);
-            //SqlConnection sqlcon = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=E:\C# projects\C# project\CleverPoppy\Database\LoginDB.mdf;Integrated Security=True;Connect Timeout=30");
-            sqlcon.Open();
-            String query = "Select name,quantitiy,unitPrice from Stock where code='" + txtCode.Text + "' or name = '"+txtName.Text+"'";
-            SqlCommand cmd = new SqlCommand(query, sqlcon);
-            SqlDataReader reader = cmd.ExecuteReader();
-            reader.Read();
-            if (reader.HasRows)
+            try
             {
-
-                lblname.Text = reader["name"].ToString();
-                lblCurrentPrice.Text = reader["unitPrice"].ToString();
-                int d = Convert.ToInt32(reader["quantitiy"]);
-                if(d == 0)
+                lblError.Text = "";
+                SqlConnection sqlcon = new SqlConnection(conn);
+                //SqlConnection sqlcon = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=E:\C# projects\C# project\CleverPoppy\Database\LoginDB.mdf;Integrated Security=True;Connect Timeout=30");
+                sqlcon.Open();
+                String query = "Select name,quantitiy,unitPrice from Stock where code='" + txtCode.Text + "' or name = '" + txtName.Text + "'";
+                SqlCommand cmd = new SqlCommand(query, sqlcon);
+                SqlDataReader reader = cmd.ExecuteReader();
+                reader.Read();
+                if (reader.HasRows)
                 {
-                    lblCurrentQuantity.ForeColor = System.Drawing.Color.Firebrick;
-                    lblCurrentQuantity.Text = "Not Available";
+
+                    lblname.Text = reader["name"].ToString();
+                    lblCurrentPrice.Text = reader["unitPrice"].ToString();
+                    int d = Convert.ToInt32(reader["quantitiy"]);
+                    if (d == 0)
+                    {
+                        lblCurrentQuantity.ForeColor = System.Drawing.Color.Firebrick;
+                        lblCurrentQuantity.Text = "Not Available";
+
+                    }
+                    else
+                    {
+                        lblCurrentQuantity.ForeColor = System.Drawing.Color.DarkBlue;
+                        lblCurrentQuantity.Text = reader["quantitiy"].ToString();
+                    }
+
 
                 }
                 else
                 {
-                    lblCurrentQuantity.ForeColor = System.Drawing.Color.DarkBlue;
-                    lblCurrentQuantity.Text = reader["quantitiy"].ToString();
+                    lblError.Text = "Item not found";
+                    txtCode.Clear();
+                    txtName.Clear();
                 }
-              
-
             }
-            else
+            catch (SystemException ex)
             {
-                lblError.Text = "Item not found";
-                txtCode.Clear();
-                txtName.Clear();
+
+                MessageBox.Show(string.Format("An error occurred: {0}", ex.Message));
             }
         }
 

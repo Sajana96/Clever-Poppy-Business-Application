@@ -32,23 +32,31 @@ namespace CleverPoppy
 
         private void btnlogin_Click(object sender, EventArgs e)
         {
-            SqlConnection sqlcon = new SqlConnection(conn);
-            //SqlConnection sqlcon = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=E:\C# projects\C# project\CleverPoppy\Database\LoginDB.mdf;Integrated Security=True;Connect Timeout=30");
-            string query = "Select * from Employee where username ='"+txtUsername.Text.Trim()+"' and password ='"+ txtPwd.Text.Trim()+"'";
-            SqlDataAdapter sda = new SqlDataAdapter(query, sqlcon);
-            DataTable dtbl = new DataTable();
-            sda.Fill(dtbl);
-            if(dtbl.Rows.Count == 1)
+            try
             {
-                (new Form1()).Show(); 
-                this.Hide();
+                SqlConnection sqlcon = new SqlConnection(conn);
+                //SqlConnection sqlcon = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=E:\C# projects\C# project\CleverPoppy\Database\LoginDB.mdf;Integrated Security=True;Connect Timeout=30");
+                string query = "Select * from Employee where username ='" + txtUsername.Text.Trim() + "' and password ='" + txtPwd.Text.Trim() + "'";
+                SqlDataAdapter sda = new SqlDataAdapter(query, sqlcon);
+                DataTable dtbl = new DataTable();
+                sda.Fill(dtbl);
+                if (dtbl.Rows.Count == 1)
+                {
+                    (new Form1()).Show();
+                    this.Hide();
+                }
+                else
+                {
+                    lblError.Text = "Invalid Username or Password";
+                    txtUsername.Clear();
+                    txtPwd.Clear();
+                    txtUsername.Focus();
+                }
             }
-            else
+            catch (SystemException ex)
             {
-                lblError.Text = "Invalid Username or Password";
-                txtUsername.Clear();
-                txtPwd.Clear();
-                txtUsername.Focus();
+
+                MessageBox.Show(string.Format("An error occurred: {0}", ex.Message));
             }
 
           

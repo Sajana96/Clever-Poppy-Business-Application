@@ -25,18 +25,26 @@ namespace CleverPoppy
 
         private void SalesProducts_Load(object sender, EventArgs e)
         {
-            SqlConnection sqlcon = new SqlConnection(conn);
-            sqlcon.Open();
-            string query = @"select * from SoldItems where 
+            try
+            {
+                SqlConnection sqlcon = new SqlConnection(conn);
+                sqlcon.Open();
+                string query = @"select * from SoldItems where 
               BilledDate >= '" + SD + "' and BilledDate <= '" + ED + "'";
 
-            SqlDataAdapter sda = new SqlDataAdapter(query, sqlcon);
-            DataSet ds = new DataSet();
-            sda.Fill(ds, "SoldItems");
-            SalesForItems cr1 = new SalesForItems();
-            cr1.SetDataSource(ds);
-            crystalReportViewer1.ReportSource = cr1;
-            crystalReportViewer1.Refresh();
+                SqlDataAdapter sda = new SqlDataAdapter(query, sqlcon);
+                DataSet ds = new DataSet();
+                sda.Fill(ds, "SoldItems");
+                SalesForItems cr1 = new SalesForItems();
+                cr1.SetDataSource(ds);
+                crystalReportViewer1.ReportSource = cr1;
+                crystalReportViewer1.Refresh();
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(string.Format("An error occurred: {0}", ex.Message));
+            }
         }
     }
 }

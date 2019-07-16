@@ -46,53 +46,69 @@ namespace CleverPoppy
 
         private void btn_closeform_Click(object sender, EventArgs e)
         {
-            SqlConnection sqlcon = new SqlConnection(conn);
-            //SqlConnection sqlcon = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=E:\C# projects\C# project\CleverPoppy\Database\LoginDB.mdf;Integrated Security=True;Connect Timeout=30");
-            string q = "Delete from Bill";
-            SqlDataAdapter sdaA = new SqlDataAdapter(q, sqlcon);
-            DataTable dtblA = new DataTable();
-            sdaA.Fill(dtblA);
-            this.Close();
+            try
+            {
+                SqlConnection sqlcon = new SqlConnection(conn);
+                //SqlConnection sqlcon = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=E:\C# projects\C# project\CleverPoppy\Database\LoginDB.mdf;Integrated Security=True;Connect Timeout=30");
+                string q = "Delete from Bill";
+                SqlDataAdapter sdaA = new SqlDataAdapter(q, sqlcon);
+                DataTable dtblA = new DataTable();
+                sdaA.Fill(dtblA);
+                this.Close();
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(string.Format("An error occurred: {0}", ex.Message));
+            }
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            SqlConnection sqlcon = new SqlConnection(conn);
-            //SqlConnection sqlcon = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=E:\C# projects\C# project\CleverPoppy\Database\LoginDB.mdf;Integrated Security=True;Connect Timeout=30");
-            sqlcon.Open();
+            try
+            {
+                SqlConnection sqlcon = new SqlConnection(conn);
+                //SqlConnection sqlcon = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=E:\C# projects\C# project\CleverPoppy\Database\LoginDB.mdf;Integrated Security=True;Connect Timeout=30");
+                sqlcon.Open();
 
-            string qry1 = "Select quantity from Bill where code ='" + txtCode.Text + "' or name='" + txtName.Text + "'";
-            SqlCommand cmd1 = new SqlCommand(qry1, sqlcon);
-            SqlDataReader reader1 = cmd1.ExecuteReader();
-            reader1.Read();
-            int pq = Convert.ToInt32(reader1["quantity"]);
-            reader1.Close();
+                string qry1 = "Select quantity from Bill where code ='" + txtCode.Text + "' or name='" + txtName.Text + "'";
+                SqlCommand cmd1 = new SqlCommand(qry1, sqlcon);
+                SqlDataReader reader1 = cmd1.ExecuteReader();
+                reader1.Read();
+                int pq = Convert.ToInt32(reader1["quantity"]);
+                reader1.Close();
 
-            string qry2 = "Update Stock set quantitiy =quantitiy+'" + pq + "' where code='" + txtCode.Text + "' or name='" + txtName.Text + "'";
-            SqlDataAdapter sd1 = new SqlDataAdapter(qry2, sqlcon);
-            DataTable dtblB = new DataTable();
-            sd1.Fill(dtblB);
-
-
+                string qry2 = "Update Stock set quantitiy =quantitiy+'" + pq + "' where code='" + txtCode.Text + "' or name='" + txtName.Text + "'";
+                SqlDataAdapter sd1 = new SqlDataAdapter(qry2, sqlcon);
+                DataTable dtblB = new DataTable();
+                sd1.Fill(dtblB);
 
 
-            string query = "Delete  from Bill where code ='"+txtCode.Text+"' or name='"+txtName.Text+"'";
-            SqlDataAdapter sdaA = new SqlDataAdapter(query, sqlcon);
-            DataTable dtblA = new DataTable();
-            sdaA.Fill(dtblA);
 
-            string qry = "Select SUM(cost) as total from Bill";
-            SqlCommand cmd = new SqlCommand(qry, sqlcon);
-            SqlDataReader reader = cmd.ExecuteReader();
-            reader.Read();
-            txtTotal.Text = reader["total"].ToString();
-            reader.Close();
 
-            string qryCount = "Select COUNT(*) as Number from Bill";
-            SqlCommand cmdCount = new SqlCommand(qryCount, sqlcon);
-            SqlDataReader readerCount = cmdCount.ExecuteReader();
-            readerCount.Read();
-            txtNumOfItems.Text = readerCount["Number"].ToString();
+                string query = "Delete  from Bill where code ='" + txtCode.Text + "' or name='" + txtName.Text + "'";
+                SqlDataAdapter sdaA = new SqlDataAdapter(query, sqlcon);
+                DataTable dtblA = new DataTable();
+                sdaA.Fill(dtblA);
+
+                string qry = "Select SUM(cost) as total from Bill";
+                SqlCommand cmd = new SqlCommand(qry, sqlcon);
+                SqlDataReader reader = cmd.ExecuteReader();
+                reader.Read();
+                txtTotal.Text = reader["total"].ToString();
+                reader.Close();
+
+                string qryCount = "Select COUNT(*) as Number from Bill";
+                SqlCommand cmdCount = new SqlCommand(qryCount, sqlcon);
+                SqlDataReader readerCount = cmdCount.ExecuteReader();
+                readerCount.Read();
+                txtNumOfItems.Text = readerCount["Number"].ToString();
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(string.Format("An error occurred: {0}", ex.Message));
+            }
 
 
 
@@ -144,29 +160,37 @@ namespace CleverPoppy
 
         private void btnCalculate_Click(object sender, EventArgs e)
         {
-            
-            int NumOfItems = Convert.ToInt32(txtNumOfItems.Text);
-            int totalPayment = Convert.ToInt32(txtTotal.Text);
-            DateTime myDateTime = DateTime.Now;
-            string sqlFormattedDate = myDateTime.Date.ToString("yyyy-MM-dd");
 
-            SqlConnection sqlcon = new SqlConnection(conn);
-            string query = "Insert into BillOrder (BillDate, NumberOfItems, TotalPayment) values ('"+sqlFormattedDate+"', '"+NumOfItems+"', '"+totalPayment+"')";
-            SqlDataAdapter sda = new SqlDataAdapter(query, sqlcon);
-            DataTable dtbl = new DataTable();
-            sda.Fill(dtbl);
+            try
+            {
+                int NumOfItems = Convert.ToInt32(txtNumOfItems.Text);
+                int totalPayment = Convert.ToInt32(txtTotal.Text);
+                DateTime myDateTime = DateTime.Now;
+                string sqlFormattedDate = myDateTime.Date.ToString("yyyy-MM-dd");
 
-           
+                SqlConnection sqlcon = new SqlConnection(conn);
+                string query = "Insert into BillOrder (BillDate, NumberOfItems, TotalPayment) values ('" + sqlFormattedDate + "', '" + NumOfItems + "', '" + totalPayment + "')";
+                SqlDataAdapter sda = new SqlDataAdapter(query, sqlcon);
+                DataTable dtbl = new DataTable();
+                sda.Fill(dtbl);
 
 
-            string query1 = "Insert into SoldItems ( ItemCode, PurchasedQuantity, ItemSum, BilledDate )  Select code, quantity, cost, billedDate from Bill  ";
-            SqlDataAdapter sda1 = new SqlDataAdapter(query1, sqlcon);
-            DataTable dtbl1 = new DataTable();
-            sda1.Fill(dtbl1);
 
-            MessageBox.Show("Billed Successfully");
-            (new InvoiceForCustomer()).Show();
 
+                string query1 = "Insert into SoldItems ( ItemCode, PurchasedQuantity, ItemSum, BilledDate )  Select code, quantity, cost, billedDate from Bill  ";
+                SqlDataAdapter sda1 = new SqlDataAdapter(query1, sqlcon);
+                DataTable dtbl1 = new DataTable();
+                sda1.Fill(dtbl1);
+
+                MessageBox.Show("Billed Successfully");
+                (new InvoiceForCustomer()).Show();
+
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(string.Format("An error occurred: {0}", ex.Message));
+            }
 
 
         }
@@ -178,66 +202,82 @@ namespace CleverPoppy
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            purchaseQty = Convert.ToInt32(txtPurchaseQty.Text);
-            cost = purchaseQty * price;
-            
-            if (purchaseQty <= currentQty)
+            try
             {
-                DateTime myDateTime = DateTime.Now;
-                string sqlFormattedDate = myDateTime.Date.ToString("yyyy-MM-dd");
-                updatedQty = currentQty - purchaseQty;
-                SqlConnection sqlcon = new SqlConnection(conn);
-                //SqlConnection sqlcon = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=E:\C# projects\C# project\CleverPoppy\Database\LoginDB.mdf;Integrated Security=True;Connect Timeout=30");
-                sqlcon.Open();
-                string query = "insert into Bill values('" + ProductCode + "','" + ProductName + "','" + purchaseQty + "','" + price + "','" + cost + "','"+sqlFormattedDate+"')";
-                SqlDataAdapter sda = new SqlDataAdapter(query, sqlcon);
-                DataTable dtbl = new DataTable();
-                sda.Fill(dtbl);
+                purchaseQty = Convert.ToInt32(txtPurchaseQty.Text);
+                cost = purchaseQty * price;
 
-                string qry1 = "Update Stock set quantitiy ='"+updatedQty+"' where code='"+ProductCode+"' or name='"+ProductName+"'";
-                SqlDataAdapter sd1 = new SqlDataAdapter(qry1, sqlcon);
-                DataTable dtblB = new DataTable();
-                sd1.Fill(dtblB);
+                if (purchaseQty <= currentQty)
+                {
+                    DateTime myDateTime = DateTime.Now;
+                    string sqlFormattedDate = myDateTime.Date.ToString("yyyy-MM-dd");
+                    updatedQty = currentQty - purchaseQty;
+                    SqlConnection sqlcon = new SqlConnection(conn);
+                    //SqlConnection sqlcon = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=E:\C# projects\C# project\CleverPoppy\Database\LoginDB.mdf;Integrated Security=True;Connect Timeout=30");
+                    sqlcon.Open();
+                    string query = "insert into Bill values('" + ProductCode + "','" + ProductName + "','" + purchaseQty + "','" + price + "','" + cost + "','" + sqlFormattedDate + "')";
+                    SqlDataAdapter sda = new SqlDataAdapter(query, sqlcon);
+                    DataTable dtbl = new DataTable();
+                    sda.Fill(dtbl);
 
-                string qry = "Select SUM(cost) as total from Bill";
-                SqlCommand cmd = new SqlCommand(qry, sqlcon);
-                SqlDataReader reader = cmd.ExecuteReader();
-                reader.Read();
-                txtTotal.Text = reader["total"].ToString();
-                reader.Close();
+                    string qry1 = "Update Stock set quantitiy ='" + updatedQty + "' where code='" + ProductCode + "' or name='" + ProductName + "'";
+                    SqlDataAdapter sd1 = new SqlDataAdapter(qry1, sqlcon);
+                    DataTable dtblB = new DataTable();
+                    sd1.Fill(dtblB);
 
-                string qryCount = "Select COUNT(*) as Number from Bill";
-                SqlCommand cmdCount = new SqlCommand(qryCount, sqlcon);
-                SqlDataReader readerCount = cmdCount.ExecuteReader();
-                readerCount.Read();
-                txtNumOfItems.Text = readerCount["Number"].ToString();
+                    string qry = "Select SUM(cost) as total from Bill";
+                    SqlCommand cmd = new SqlCommand(qry, sqlcon);
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    reader.Read();
+                    txtTotal.Text = reader["total"].ToString();
+                    reader.Close();
 
-                DisplayData();
-                ClearData();
+                    string qryCount = "Select COUNT(*) as Number from Bill";
+                    SqlCommand cmdCount = new SqlCommand(qryCount, sqlcon);
+                    SqlDataReader readerCount = cmdCount.ExecuteReader();
+                    readerCount.Read();
+                    txtNumOfItems.Text = readerCount["Number"].ToString();
+
+                    DisplayData();
+                    ClearData();
+                }
+                else
+                {
+                    MessageBox.Show("Existing units are not sufficient for the order");
+                    DisplayData();
+                    ClearData();
+                }
+
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show("Existing units are not sufficient for the order");
-                DisplayData();
-                ClearData();
-            }
 
+                MessageBox.Show(string.Format("An error occurred: {0}", ex.Message));
+            }
         }
 
         public void DisplayData()
         {
-            SqlConnection sqlcon = new SqlConnection(conn);
-            //SqlConnection sqlcon = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=E:\C# projects\C# project\CleverPoppy\Database\LoginDB.mdf;Integrated Security=True;Connect Timeout=30");
-            string query = "Select * from Bill";
-            SqlDataAdapter sda = new SqlDataAdapter(query, sqlcon);
-            DataTable dtbl = new DataTable();
-            sda.Fill(dtbl);
-
-            //viewing data
-            dgvRefreshStock.DataSource = dtbl;
-            foreach (DataGridViewBand band in dgvRefreshStock.Columns)
+            try
             {
-                band.ReadOnly = true;
+                SqlConnection sqlcon = new SqlConnection(conn);
+                //SqlConnection sqlcon = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=E:\C# projects\C# project\CleverPoppy\Database\LoginDB.mdf;Integrated Security=True;Connect Timeout=30");
+                string query = "Select * from Bill";
+                SqlDataAdapter sda = new SqlDataAdapter(query, sqlcon);
+                DataTable dtbl = new DataTable();
+                sda.Fill(dtbl);
+
+                //viewing data
+                dgvRefreshStock.DataSource = dtbl;
+                foreach (DataGridViewBand band in dgvRefreshStock.Columns)
+                {
+                    band.ReadOnly = true;
+                }
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(string.Format("An error occurred: {0}", ex.Message));
             }
         }
 
@@ -248,50 +288,58 @@ namespace CleverPoppy
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            SqlConnection sqlcon = new SqlConnection(conn);
-            //SqlConnection sqlcon = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=E:\C# projects\C# project\CleverPoppy\Database\LoginDB.mdf;Integrated Security=True;Connect Timeout=30");
-            sqlcon.Open();
-            String query = "Select * from Stock where code='" + txtCode.Text + "' or name = '" + txtName.Text + "'";
-            SqlCommand cmd = new SqlCommand(query, sqlcon);
-            SqlDataReader reader = cmd.ExecuteReader();
-            reader.Read();
-            if (reader.HasRows)
+            try
             {
-                ProductName = lblname.Text;
-                lblname.Text = reader["name"].ToString();
-                lblprice.Text = reader["unitPrice"].ToString();
-                price = Convert.ToInt32(reader["unitPrice"]);
-
-                currentQty= Convert.ToInt32(reader["quantitiy"]);
-                if (currentQty == 0)
+                SqlConnection sqlcon = new SqlConnection(conn);
+                //SqlConnection sqlcon = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=E:\C# projects\C# project\CleverPoppy\Database\LoginDB.mdf;Integrated Security=True;Connect Timeout=30");
+                sqlcon.Open();
+                String query = "Select * from Stock where code='" + txtCode.Text + "' or name = '" + txtName.Text + "'";
+                SqlCommand cmd = new SqlCommand(query, sqlcon);
+                SqlDataReader reader = cmd.ExecuteReader();
+                reader.Read();
+                if (reader.HasRows)
                 {
+                    ProductName = lblname.Text;
+                    lblname.Text = reader["name"].ToString();
+                    lblprice.Text = reader["unitPrice"].ToString();
+                    price = Convert.ToInt32(reader["unitPrice"]);
 
-                    MessageBox.Show("No units available");
-                    lblname.Text = "";
-                    lblprice.Text = "";
-                    txtCode.Clear();
-                    txtName.Clear();
                     currentQty = Convert.ToInt32(reader["quantitiy"]);
-                    price = 0;
-                    DisplayData();
+                    if (currentQty == 0)
+                    {
+
+                        MessageBox.Show("No units available");
+                        lblname.Text = "";
+                        lblprice.Text = "";
+                        txtCode.Clear();
+                        txtName.Clear();
+                        currentQty = Convert.ToInt32(reader["quantitiy"]);
+                        price = 0;
+                        DisplayData();
+
+                    }
+                    else
+                    {
+                        price = Convert.ToInt32(reader["unitPrice"]);
+                        currentQty = Convert.ToInt32(reader["quantitiy"]);
+                        ProductName = lblname.Text;
+                        ProductCode = reader["code"].ToString();
+                        DisplayData();
+                    }
+
 
                 }
                 else
                 {
-                    price = Convert.ToInt32(reader["unitPrice"]);
-                    currentQty = Convert.ToInt32(reader["quantitiy"]);
-                    ProductName = lblname.Text;
-                    ProductCode = reader["code"].ToString();
-                    DisplayData();
+                    MessageBox.Show("No item found");
+                    txtCode.Clear();
+                    txtName.Clear();
                 }
-
-
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show("No item found");
-                txtCode.Clear();
-                txtName.Clear();
+
+                MessageBox.Show(string.Format("An error occurred: {0}", ex.Message));
             }
         }
     }

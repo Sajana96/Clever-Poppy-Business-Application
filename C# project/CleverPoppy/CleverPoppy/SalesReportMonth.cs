@@ -25,18 +25,26 @@ namespace CleverPoppy
         
         private void SalesReportMonth_Load(object sender, EventArgs e)
         {
-            SqlConnection sqlcon = new SqlConnection(conn);
-            sqlcon.Open();
-            string query = @"select * from BillOrder where 
-              BillDate >= '"+SD+"' and BillDate <= '"+ED+"'";
-            
-            SqlDataAdapter sda = new SqlDataAdapter(query, sqlcon);
-            DataSet ds = new DataSet();
-            sda.Fill(ds, "BillOrder");
-            SalesReport cr1 = new SalesReport();
-            cr1.SetDataSource(ds);
-            crystalReportViewer1.ReportSource = cr1;
-            crystalReportViewer1.Refresh();
+            try
+            {
+                SqlConnection sqlcon = new SqlConnection(conn);
+                sqlcon.Open();
+                string query = @"select * from BillOrder where 
+              BillDate >= '" + SD + "' and BillDate <= '" + ED + "'";
+
+                SqlDataAdapter sda = new SqlDataAdapter(query, sqlcon);
+                DataSet ds = new DataSet();
+                sda.Fill(ds, "BillOrder");
+                SalesReport cr1 = new SalesReport();
+                cr1.SetDataSource(ds);
+                crystalReportViewer1.ReportSource = cr1;
+                crystalReportViewer1.Refresh();
+            }
+            catch (Exception ex)
+            {
+
+                throw; MessageBox.Show(string.Format("An error occurred: {0}", ex.Message));
+            }
             
 
         }
