@@ -1,0 +1,89 @@
+C:\Users\Sajana\source\repos\CleverPoppy\CleverPoppy\obj\Debug\CleverPoppy.csprojAssemblyReference.cache
+C:\Users\Sajana\source\repos\CleverPoppy\CleverPoppy\obj\Debug\CleverPoppy.Form1.resources
+C:\Users\Sajana\source\repos\CleverPoppy\CleverPoppy\obj\Debug\CleverPoppy.csproj.GenerateResource.cache
+C:\Users\Sajana\source\repos\CleverPoppy\CleverPoppy\bin\Debug\CleverPoppy.exe.config
+C:\Users\Sajana\source\repos\CleverPoppy\CleverPoppy\bin\Debug\CleverPoppy.exe
+C:\Users\Sajana\source\repos\CleverPoppy\CleverPoppy\bin\Debug\CleverPoppy.pdb
+C:\Users\Sajana\source\repos\CleverPoppy\CleverPoppy\obj\Debug\CleverPoppy.Properties.Resources.resources
+C:\Users\Sajana\source\repos\CleverPoppy\CleverPoppy\obj\Debug\CleverPoppy.csproj.CoreCompileInputs.cache
+C:\Users\Sajana\source\repos\CleverPoppy\CleverPoppy\obj\Debug\CleverPoppy.exe
+C:\Users\Sajana\source\repos\CleverPoppy\CleverPoppy\obj\Debug\CleverPoppy.pdb
+C:\Users\Sajana\source\repos\CleverPoppy\CleverPoppy\obj\Debug\CleverPoppy.Form2.resources
+G:\Sajana\C# project\CleverPoppy\CleverPoppy\bin\Debug\CleverPoppy.exe.config
+G:\Sajana\C# project\CleverPoppy\CleverPoppy\bin\Debug\CleverPoppy.exe
+G:\Sajana\C# project\CleverPoppy\CleverPoppy\bin\Debug\CleverPoppy.pdb
+G:\Sajana\C# project\CleverPoppy\CleverPoppy\obj\Debug\CleverPoppy.csprojAssemblyReference.cache
+G:\Sajana\C# project\CleverPoppy\CleverPoppy\obj\Debug\CleverPoppy.Form1.resources
+G:\Sajana\C# project\CleverPoppy\CleverPoppy\obj\Debug\CleverPoppy.Login.resources
+G:\Sajana\C# project\CleverPoppy\CleverPoppy\obj\Debug\CleverPoppy.Properties.Resources.resources
+G:\Sajana\C# project\CleverPoppy\CleverPoppy\obj\Debug\CleverPoppy.csproj.GenerateResource.cache
+G:\Sajana\C# project\CleverPoppy\CleverPoppy\obj\Debug\CleverPoppy.csproj.CoreCompileInputs.cache
+G:\Sajana\C# project\CleverPoppy\CleverPoppy\obj\Debug\CleverPoppy.exe
+G:\Sajana\C# project\CleverPoppy\CleverPoppy\obj\Debug\CleverPoppy.pdb
+G:\Sajana\C# project\CleverPoppy\CleverPoppy\bin\Debug\MySql.Data.DLL
+G:\Sajana\C# project\CleverPoppy\CleverPoppy\obj\Debug\CleverPoppy.csproj.CopyComplete
+G:\Sajana\C# project\CleverPoppy\CleverPoppy\obj\Debug\CleverPoppy.PrintBill.resources
+G:\Sajana\C# project\CleverPoppy\CleverPoppy\obj\Debug\CleverPoppy.UpdateStock.resources
+G:\Sajana\C# project\CleverPoppy\CleverPoppy\obj\Debug\CleverPoppy.AddNewItem.resources
+G:\Sajana\C# project\CleverPoppy\CleverPoppy\obj\Debug\CleverPoppy.UpdateItem.resources
+G:\Sajana\C# project\CleverPoppy\CleverPoppy\obj\Debug\CleverPoppy.CheckAvailability.resources
+D:\C# projects\C# project\CleverPoppy\CleverPoppy\bin\Debug\CleverPoppy.exe.config
+D:\C# projects\C# project\CleverPoppy\CleverPoppy\bin\Debug\CleverPoppy.exe
+D:\C# projects\C# project\CleverPoppy\CleverPoppy\bin\Debug\CleverPoppy.pdb
+D:\C# projects\C# project\CleverPoppy\CleverPoppy\obj\Debug\CleverPoppy.csprojAssemblyReference.cache
+D:\C# projects\C# project\CleverPoppy\CleverPoppy\obj\Debug\CleverPoppy.AddNewItem.resources
+D:\C# projects\C# project\CleverPoppy\CleverPoppy\obj\Debug\CleverPoppy.CheckAvailability.resources
+D:\C# projects\C# project\CleverPoppy\CleverPoppy\obj\Debug\CleverPoppy.Form1.resources
+D:\C# projects\C# project\CleverPoppy\CleverPoppy\obj\Debug\CleverPoppy.Login.resources
+D:\C# projects\C# project\CleverPoppy\CleverPoppy\obj\Debug\CleverPoppy.PrintBill.resources
+D:\C# projects\C# project\CleverPoppy\CleverPoppy\obj\Debug\CleverPoppy.Properties.Resources.resources
+D:\C# projects\C# project\CleverPoppy\CleverPoppy\obj\Debug\CleverPoppy.UpdateItem.resources
+D:\C# projects\C# project\CleverPoppy\CleverPoppy\obj\Debug\CleverPoppy.UpdateStock.resources
+D:\C# projects\C# project\CleverPoppy\CleverPoppy\obj\Debug\CleverPoppy.csproj.GenerateResource.cache
+D:\C# projects\C# project\CleverPoppy\CleverPoppy\obj\Debug\CleverPoppy.csproj.CoreCompileInputs.cache
+D:\C# projects\C# project\CleverPoppy\CleverPoppy\obj\Debug\CleverPoppy.csproj.CopyComplete
+D:\C# projects\C# project\CleverPoppy\CleverPoppy\obj\Debug\CleverPoppy.exe
+D:\C# projects\C# project\CleverPoppy\CleverPoppy\obj\Debug\CleverPoppy.pdb
+E:\C# projects\C# project\CleverPoppy\CleverPoppy\bin\Debug\CleverPoppy.exe.config
+E:\C# projects\C# project\CleverPoppy\CleverPoppy\bin\Debug\CleverPoppy.exe
+E:\C# projects\C# project\CleverPoppy\CleverPoppy\bin\Debug\CleverPoppy.pdb
+E:\C# projects\C# project\CleverPoppy\CleverPoppy\obj\Debug\CleverPoppy.csprojAssemblyReference.cache
+E:\C# projects\C# project\CleverPoppy\CleverPoppy\obj\Debug\CleverPoppy.AddNewItem.resources
+E:\C# projects\C# project\CleverPoppy\CleverPoppy\obj\Debug\CleverPoppy.CheckAvailability.resources
+E:\C# projects\C# project\CleverPoppy\CleverPoppy\obj\Debug\CleverPoppy.Form1.resources
+E:\C# projects\C# project\CleverPoppy\CleverPoppy\obj\Debug\CleverPoppy.Login.resources
+E:\C# projects\C# project\CleverPoppy\CleverPoppy\obj\Debug\CleverPoppy.PrintBill.resources
+E:\C# projects\C# project\CleverPoppy\CleverPoppy\obj\Debug\CleverPoppy.Properties.Resources.resources
+E:\C# projects\C# project\CleverPoppy\CleverPoppy\obj\Debug\CleverPoppy.UpdateItem.resources
+E:\C# projects\C# project\CleverPoppy\CleverPoppy\obj\Debug\CleverPoppy.UpdateStock.resources
+E:\C# projects\C# project\CleverPoppy\CleverPoppy\obj\Debug\CleverPoppy.csproj.GenerateResource.cache
+E:\C# projects\C# project\CleverPoppy\CleverPoppy\obj\Debug\CleverPoppy.csproj.CoreCompileInputs.cache
+E:\C# projects\C# project\CleverPoppy\CleverPoppy\obj\Debug\CleverPoppy.csproj.CopyComplete
+E:\C# projects\C# project\CleverPoppy\CleverPoppy\obj\Debug\CleverPoppy.exe
+E:\C# projects\C# project\CleverPoppy\CleverPoppy\obj\Debug\CleverPoppy.pdb
+E:\C# projects\C# project\CleverPoppy\CleverPoppy\obj\Debug\CleverPoppy.splashScreen.resources
+E:\C# projects\C# project\CleverPoppy\CleverPoppy\bin\Debug\LoginDB.mdf
+E:\C# projects\C# project\CleverPoppy\CleverPoppy\bin\Debug\LoginDB_log.ldf
+E:\C# projects\C# project\CleverPoppy\CleverPoppy\obj\Debug\CleverPoppy.frmSalesDetail.resources
+E:\C# projects\C# project\CleverPoppy\CleverPoppy\bin\Debug\CrystalDecisions.CrystalReports.Engine.dll
+E:\C# projects\C# project\CleverPoppy\CleverPoppy\bin\Debug\CrystalDecisions.ReportSource.dll
+E:\C# projects\C# project\CleverPoppy\CleverPoppy\bin\Debug\CrystalDecisions.Shared.dll
+E:\C# projects\C# project\CleverPoppy\CleverPoppy\bin\Debug\CrystalDecisions.ReportAppServer.DataDefModel.dll
+E:\C# projects\C# project\CleverPoppy\CleverPoppy\bin\Debug\CrystalDecisions.ReportAppServer.ClientDoc.dll
+E:\C# projects\C# project\CleverPoppy\CleverPoppy\bin\Debug\CrystalDecisions.ReportAppServer.ReportDefModel.dll
+E:\C# projects\C# project\CleverPoppy\CleverPoppy\bin\Debug\CrystalDecisions.ReportAppServer.Controllers.dll
+E:\C# projects\C# project\CleverPoppy\CleverPoppy\bin\Debug\CrystalDecisions.ReportAppServer.CommLayer.dll
+E:\C# projects\C# project\CleverPoppy\CleverPoppy\bin\Debug\CrystalDecisions.ReportAppServer.DataSetConversion.dll
+E:\C# projects\C# project\CleverPoppy\CleverPoppy\bin\Debug\CrystalDecisions.ReportAppServer.Prompting.dll
+E:\C# projects\C# project\CleverPoppy\CleverPoppy\bin\Debug\CrystalDecisions.ReportAppServer.XmlSerialize.dll
+E:\C# projects\C# project\CleverPoppy\CleverPoppy\bin\Debug\CrystalDecisions.ReportAppServer.CubeDefModel.dll
+E:\C# projects\C# project\CleverPoppy\CleverPoppy\bin\Debug\CrystalDecisions.ReportAppServer.CommonObjectModel.dll
+E:\C# projects\C# project\CleverPoppy\CleverPoppy\bin\Debug\CrystalDecisions.ReportAppServer.ObjectFactory.dll
+E:\C# projects\C# project\CleverPoppy\CleverPoppy\bin\Debug\CrystalDecisions.ReportAppServer.CommonControls.dll
+E:\C# projects\C# project\CleverPoppy\CleverPoppy\bin\Debug\stdole.dll
+E:\C# projects\C# project\CleverPoppy\CleverPoppy\bin\Debug\CrystalDecisions.Windows.Forms.dll
+E:\C# projects\C# project\CleverPoppy\CleverPoppy\bin\Debug\FlashControlV71.dll
+E:\C# projects\C# project\CleverPoppy\CleverPoppy\bin\Debug\ShockwaveFlashObjects.dll
+E:\C# projects\C# project\CleverPoppy\CleverPoppy\obj\Debug\CleverPoppy.SalesReportMonth.resources
+E:\C# projects\C# project\CleverPoppy\CleverPoppy\obj\Debug\CleverPoppy.SalesProducts.resources
+E:\C# projects\C# project\CleverPoppy\CleverPoppy\obj\Debug\CleverPoppy.InvoiceForCustomer.resources
