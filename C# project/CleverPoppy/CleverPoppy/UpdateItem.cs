@@ -104,6 +104,8 @@ namespace CleverPoppy
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
+            DateTime myDateTime = DateTime.Now;
+            string sqlFormattedDate = myDateTime.ToString("yyyy-MM-dd");
             try
             {
                 lblError.Text = "";
@@ -112,7 +114,7 @@ namespace CleverPoppy
                 //SqlConnection sqlcon = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=E:\C# projects\C# project\CleverPoppy\Database\LoginDB.mdf;Integrated Security=True;Connect Timeout=30");
                 if (txtNewPrice.Text == "" && !(txtNewQuantity.Text == ""))
                 {
-                    String query = "Update Stock set quantitiy='" + txtNewQuantity.Text + "' where code='" + txtCode.Text + "'";
+                    String query = "Update Stock set quantitiy='" + txtNewQuantity.Text + "', addedDate='"+sqlFormattedDate+"'  where code='" + txtCode.Text + "'";
                     SqlDataAdapter sda = new SqlDataAdapter(query, sqlcon);
                     DataTable dtbl = new DataTable();
                     sda.Fill(dtbl);
@@ -122,7 +124,7 @@ namespace CleverPoppy
                 }
                 else if (txtNewQuantity.Text == "" && !(txtNewPrice.Text == ""))
                 {
-                    String query = "Update Stock set unitPrice='" + txtNewPrice.Text + "' where code='" + txtCode.Text + "'";
+                    String query = "Update Stock set unitPrice='" + txtNewPrice.Text + "', addedDate='" + sqlFormattedDate + "' where code='" + txtCode.Text + "'";
                     SqlDataAdapter sda = new SqlDataAdapter(query, sqlcon);
                     DataTable dtbl = new DataTable();
                     sda.Fill(dtbl);
@@ -132,7 +134,7 @@ namespace CleverPoppy
                 }
                 else if (!(txtNewPrice.Text == "" && txtNewQuantity.Text == ""))
                 {
-                    String query = "Update Stock set unitPrice='" + txtNewPrice.Text + "', quantitiy='" + txtNewQuantity.Text + "' where code='" + txtCode.Text + "'";
+                    String query = "Update Stock set unitPrice='" + txtNewPrice.Text + "', quantitiy='" + txtNewQuantity.Text + "', addedDate='" + sqlFormattedDate + "' where code='" + txtCode.Text + "'";
                     SqlDataAdapter sda = new SqlDataAdapter(query, sqlcon);
                     DataTable dtbl = new DataTable();
                     sda.Fill(dtbl);
